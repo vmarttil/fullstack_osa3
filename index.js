@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
 
-const persons = {
-    "persons": [
+const persons = [
       {
         "name": "Arto Hellas",
         "number": "040-123456",
@@ -24,11 +23,18 @@ const persons = {
         "id": 4
       }
     ]
-  }
+
+  app.get('/info', (request, response) => {
+    response.send(`<p>Phonebook has info for ${persons.reduce((acc, person) => acc + 1, 0)} people</p>
+                    <p>${new Date()}</p>`)
+    
+  })
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
+
+
 
 const port = 3001
 app.listen(port)
