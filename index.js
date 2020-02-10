@@ -56,10 +56,24 @@ app.get('/api/persons', (request, response) => {
 
 app.post('/api/persons', (request, response) => {
     const person = request.body
+    if (!person.name) {
+        return response.status(400).json({ 
+            error: 'name missing' 
+          })
+    } else if (!person.number) {
+        return response.status(400).json({ 
+            error: 'number missing' 
+          })
+    } else if (persons.some(p => p.name === person.name)) {
+        return response.status(400).json({ 
+            error: 'name already in phonebook' 
+          })
+    } else {
     person.id = Math.round(Math.random() * 10000)
     persons.push(person)
     response.json(person)
-  })
+    }
+})
 
 const port = 3001
 app.listen(port)
