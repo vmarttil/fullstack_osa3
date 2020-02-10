@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json()) 
+
 let persons = [
       {
         "name": "Arto Hellas",
@@ -52,7 +54,12 @@ app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
 
-
+app.post('/api/persons', (request, response) => {
+    const person = request.body
+    person.id = Math.round(Math.random() * 10000)
+    persons.push(person)
+    response.json(person)
+  })
 
 const port = 3001
 app.listen(port)
