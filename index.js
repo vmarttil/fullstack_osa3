@@ -75,7 +75,7 @@ app.get('/api/persons', (request, response) => {
     })
 })
 
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', (request, response, next) => {
     if (!request.body.name) {
         return response.status(400).json({ 
           error: 'name missing' 
