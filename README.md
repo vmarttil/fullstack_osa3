@@ -4,4 +4,4 @@ Full Stack -kurssin osan 3 tehtävien vastaukset löytyvät tästä omasta repos
 ## Internet-versio
 Sovelluksen verkkoversio löytyy Herokusta osoitteesta [http://mysterious-woodland-05623.herokuapp.com/](http://mysterious-woodland-05623.herokuapp.com/).
 
-Backend-osion base-URL on näin ollen [http://mysterious-woodland-05623.herokuapp.com/](http://mysterious-woodland-05623.herokuapp.com/).
+Backend-osion base-URL on näin ollen [http://mysterious-woodland-05623.herokuapp.com/api/persons](http://mysterious-woodland-05623.herokuapp.com/api/persons).
