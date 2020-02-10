@@ -71,25 +71,26 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.post('/api/persons', (request, response) => {
-    const person = request.body
-    if (!person.name) {
+    if (!request.body.name) {
         return response.status(400).json({ 
-            error: 'name missing' 
-          })
-    } else if (!person.number) {
+          error: 'name missing' 
+        })
+    } 
+    if (!request.body.number) {
         return response.status(400).json({ 
-            error: 'number missing' 
+          error: 'number missing' 
+        })
+    } 
+    
+    const person = new Person({
+            name: request.body.name,
+            number: request.body.number
           })
-    } else if (persons.some(p => p.name === person.name)) {
-        return response.status(400).json({ 
-            error: 'name already in phonebook' 
+          person.save().then(savedPerson => {
+            response.json(savedPerson.toJSON())
           })
-    } else {
-        person.id = Math.round(Math.random() * 10000)
-        persons.push(person)
-        response.json(person)
-    }
-})
+    })
+
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {
