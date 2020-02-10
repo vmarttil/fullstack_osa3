@@ -19,17 +19,6 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema)
 
-/*
-const person = new Person({
-    name: 'Arto Hellas',
-    number: '040-123456',
-})
-
-person.save().then(response => {
-  console.log('person saved!');
-  mongoose.connection.close();
-}) */
-
 if ( process.argv.length === 3 ) {
   console.log("phonebook:")
   Person.find({}).then(result => {
